@@ -1,0 +1,38 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Get your giphy images</p>
+</div>
+<div>
+    <h1 class="display-4">Select your option</h1>
+</div>
+<form method="post" asp-page-handler="Daily" class="card p-3">
+    <div class="form-group mb-0 align-middle">
+        <button class="btn btn-primary">Get daily trending gifs</button>
+    </div>
+</form>
+<form method="post" asp-page-handler="Search" class="card p-3">
+    <div class="form-group mb-0 align-middle">
+        <label asp-for="searchString">Name</label>
+        <input type="text" asp-for="searchString" class="mr-5">
+        <button class="btn btn-primary">Search Gifs </button>
+    </div>
+</form>
+
+<h1>Your Images:</h1>
+@foreach (var image in Model.images)
+{
+    <p>@image</p>
+}
+<!--
+@foreach (var image in Model.images)
+{
+    <img style="-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);transition: background-color 300ms;" src=@image>
+}
+    -->
+
